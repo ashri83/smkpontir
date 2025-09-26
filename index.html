@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK PONDOK PETIR - Beranda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a5fb4;
+            --secondary: #e6b325;
+            --dark: #2e3436;
+            --light: #f6f5f5;
+            --success: #26a269;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info span {
+            margin-right: 20px;
+        }
+        
+        .contact-info i {
+            margin-right: 5px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d19d1f;
+        }
+        
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Jurusan Section */
+        .jurusan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .jurusan-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .jurusan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .jurusan-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .jurusan-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .jurusan-card:hover .jurusan-img img {
+            transform: scale(1.1);
+        }
+        
+        .jurusan-content {
+            padding: 20px;
+        }
+        
+        .jurusan-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Berita Section */
+        .berita-section {
+            background-color: #f0f4f8;
+            padding: 60px 0;
+        }
+        
+        .berita-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .berita-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .berita-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .berita-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .berita-content {
+            padding: 20px;
+        }
+        
+        .berita-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .berita-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .berita-content p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Fasilitas Section */
+        .fasilitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .fasilitas-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .fasilitas-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .fasilitas-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .fasilitas-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Page Content */
+        .page-content {
+            flex: 1;
+            padding: 60px 0;
+        }
+        
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:not(:last-child)::after {
+            content: '>';
+            margin-left: 10px;
+        }
+        
+        /* Profil Content */
+        .profil-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .profil-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profil-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Jurusan Detail */
+        .jurusan-detail {
+            margin-bottom: 60px;
+        }
+        
+        .jurusan-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        /* Galeri */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .galeri-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 200px;
+        }
+        
+        .galeri-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .galeri-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Kontak Form */
+        .kontak-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .kontak-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .kontak-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .kontak-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .kontak-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info-footer i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        /* Animasi hamburger icon */
+.mobile-menu-btn {
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn.active {
+    transform: rotate(90deg);
+}
+
+/* Tambahkan ini jika ingin animasi lebih smooth */
+nav ul {
+    transition: all 0.3s ease;
+}
+        
+        /* Responsive Design */
+        /* GANTI bagian responsive design yang sudah ada dengan ini: */
+@media (max-width: 992px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+    
+    nav ul.show {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+    
+    .header-top-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-info {
+        margin-bottom: 10px;
+    }
+    
+    .profil-content,
+    .kontak-container {
+        grid-template-columns: 1fr;
+    }
+}
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Page Transisi */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> (021) 1234-5678</span>
+                    <span><i class="fas fa-envelope"></i> info@smkpondokpetir.sch.id</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100095420731598"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smkpondokpetir/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container main-header">
+            <div class="logo">
+                <img src="images/Logo_SMK-removebg-preview.png" alt="Logo SMK">
+                <div class="logo-text">
+                    <h1>SMK PONDOK PETIR</h1>
+                    <p>Sekolah Kejuruan Berkualitas, Siap Kerja dan Berwirausaha</p>
+                </div>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+</button>
+                <ul id="main-menu">
+                    <li><a href="#" class="nav-link active" data-page="beranda">Beranda</a></li>
+                    <li><a href="#" class="nav-link" data-page="profil">Profil</a></li>
+                    <li><a href="#" class="nav-link" data-page="jurusan">Jurusan</a></li>
+                    <li><a href="#" class="nav-link" data-page="fasilitas">Fasilitas</a></li>
+                    <li><a href="#" class="nav-link" data-page="berita">Berita</a></li>
+                    <li><a href="#" class="nav-link" data-page="galeri">Galeri</a></li>
+                    <li><a href="#" class="nav-link" data-page="kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Beranda Page -->
+    <div id="beranda" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Selamat Datang di SMK PONDOK PETIR</h2>
+                <p>Menyiapkan generasi unggul yang kompeten, berkarakter, dan siap bersaing di dunia kerja maupun wirausaha di era digital.</p>
+                <a href="#" class="btn">Daftar Sekarang</a>
+            </div>
+        </section>
+
+        <!-- Jurusan Section -->
+        <section class="container">
+            <div class="section-title">
+                <h2>Program Keahlian</h2>
+            </div>
+            <div class="jurusan-grid">
+                <div class="jurusan-card">
+                    <div class="jurusan-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Rekayasa Perangkat Lunak">
+                    </div>
+                    <div class="jurusan-content">
+                        <h3>Bisnis Daring dan Pemasaran</h3>
+                        <p>Mempelajari pengembangan bisnis dan pemasaran digital.</p>
+                        <a href="#" class="read-more">Selengkapnya →</a>
+                    </div>
+                </div>
+                <div class="jurusan-card">
+                    <div class="jurusan-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Teknik Komputer dan Jaringan">
+                    </div>
+                    <div class="jurusan-content">
+                        <h3>Desain Komunikasi Visual</h3>
+                        <p>Fokus pada teknik grafika dan percetakan.</p>
+                        <a href="#" class="read-more">Selengkapnya →</a>
+                    </div>
+                </div>
+                <div class="jurusan-card">
+                    <div class="jurusan-img">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Multimedia">
+                    </div>
+                    <div class="jurusan-content">
+                        <h3>Multimedia</h3>
+                        <p>Mengembangkan kreativitas dalam desain grafis, animasi, dan produksi video.</p>
+                        <a href="#" class="read-more">Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Berita Section -->
+        <section class="berita-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Berita & Kegiatan Terbaru</h2>
+                </div>
+                <div class="berita-grid">
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Pramuka">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">15 Agustus 2023</div>
+                            <h3>Kegiatan Pramuka SMK PONDOK PETIR</h3>
+                            <p>Kegiatan perkemahan Jumat-Sabtu (Persami) dilaksanakan di Bumi Perkemahan Cibubur...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Workshop Kewirausahaan">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">10 Agustus 2023</div>
+                            <h3>Workshop Kewirausahaan untuk Siswa Kelas XII</h3>
+                            <p>SMK PONDOK PETIR mengadakan workshop kewirausahaan dengan menghadirkan pengusaha sukses...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Prestasi Siswa">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">5 Agustus 2023</div>
+                            <h3>Siswa SMK PONDOK PETIR Raih Juara Lomba display</h3>
+                            <p>Tim BDP SMK PONDOK PETIR berhasil meraih juara 1 dalam kompetisi display tingkat provinsi...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fasilitas Section -->
+        <section class="container">
+            <div class="section-title">
+                <h2>Fasilitas Sekolah</h2>
+            </div>
+            <div class="fasilitas-grid">
+                <div class="fasilitas-card">
+                    <div class="fasilitas-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Laboratorium Komputer</h3>
+                    <p>Laboratorium komputer dengan spesifikasi tinggi untuk mendukung pembelajaran.</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Internet Cepat</h3>
+                    <p>Akses internet cepat di seluruh area sekolah untuk mendukung proses belajar.</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Perpustakaan Digital</h3>
+                    <p>Perpustakaan dengan koleksi buku lengkap dan akses digital.</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="fasilitas-icon">
+                        <i class="fas fa-football-ball"></i>
+                    </div>
+                    <h3>Lapangan Olahraga</h3>
+                    <p>Fasilitas olahraga lengkap untuk mendukung kegiatan ekstrakurikuler.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Profil Page -->
+    <div id="profil" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Profil Sekolah</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Profil</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="profil-content">
+                    <div class="profil-img">
+                        <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gedung SMK Negeri 1 Teknologi">
+                    </div>
+                    <div class="profil-text">
+                        <h2>Sejarah SMK Pondok Petir</h2>
+                        <p>SMK Pondok Petir didirikan pada tahun 2021 dengan tujuan untuk memenuhi kebutuhan tenaga terampil di bidang bisnis dan grafika. Sekolah ini  memiliki dua program keahlian, yaitu Teknik Grafika dan Bisnis Daring Pemasaran.</p>
+                        <p>Seiring dengan perkembangan zaman, SMK Pondok Petir terus berinovasi dan menambah program keahlian yang relevan dengan kebutuhan industri. Saat ini, sekolah kami telah memiliki 3 program keahlian unggulan yang telah terakreditasi A.</p>
+                        <p>Visi kami adalah "Menjadi SMK unggulan yang menghasilkan lulusan kompeten, berkarakter, dan siap bersaing di dunia kerja global."</p>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Visi dan Misi</h2>
+                </div>
+                
+                <div class="jurusan-info">
+                    <h3>Visi</h3>
+                    <p>Menjadi SMK unggulan yang menghasilkan lulusan kompeten, berkarakter, dan siap bersaing di dunia kerja global.</p>
+                    
+                    <h3>Misi</h3>
+                    <ul>
+                        <li>Menyelenggarakan pendidikan kejuruan yang berkualitas dan relevan dengan kebutuhan industri</li>
+                        <li>Membangun karakter siswa yang berintegritas, disiplin, dan bertanggung jawab</li>
+                        <li>Mengembangkan potensi siswa melalui kegiatan ekstrakurikuler dan pengembangan diri</li>
+                        <li>Menjalin kerjasama dengan dunia industri untuk meningkatkan kompetensi lulusan</li>
+                        <li>Menerapkan teknologi informasi dalam proses pembelajaran dan administrasi sekolah</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Jurusan Page -->
+    <div id="jurusan" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Program Keahlian</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Jurusan</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Program Keahlian yang Tersedia</h2>
+                </div>
+                
+                <div class="jurusan-detail">
+                    <div class="jurusan-info">
+                        <h3>Teknik Grafika (TGR)</h3>
+                        <p>Program keahlian Teknik Grafika memfokuskan pada pengembangan kemampuan siswa dalam merancang, membuat, dan mengelola aplikasi desain grafis. Siswa akan mempelajari berbagai aplikasi desain grafis, website, dan pengembangan grafika.</p>
+                        <p><strong>Kompetensi Keahlian:</strong> Teknik Grafika, Multimedia, Desain Website</p>
+                    </div>
+                    
+                    <div class="jurusan-info">
+                        <h3>Bisnis Daring dan Pemasaran (BDP)</h3>
+                        <p>Program keahlian Bisnis daring dan pemasaran membekali siswa dengan kemampuan bisnis, wirausaha, dan mengelola bisnis secara daring. Siswa akan mempelajari praktek bisnis, retail, dan implementasi bisnis secara daring.</p>
+                        <p><strong>Kompetensi Keahlian:</strong> Bisnis Online, Administrasi Bisnis, Pelayanan Prima, Komunikasi Bisnis</p>
+                    </div>
+                    
+                    <div class="jurusan-info">
+                        <h3>Multimedia (MM)</h3>
+                        <p>Program keahlian Multimedia mengembangkan kreativitas siswa dalam bidang desain grafis, animasi, dan produksi video. Siswa akan mempelajari software desain, teknik animasi, editing video, dan fotografi digital.</p>
+                        <p><strong>Kompetensi Keahlian:</strong> Desain Grafis, Animasi 2D dan 3D, Produksi Video, Fotografi Digital</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Fasilitas Page -->
+    <div id="fasilitas" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Fasilitas Sekolah</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Fasilitas</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Fasilitas yang Tersedia</h2>
+                </div>
+                
+                <div class="fasilitas-grid">
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Laboratorium Komputer</h3>
+                        <p>ruang laboratorium komputer dengan spesifikasi tinggi, dilengkapi software terbaru untuk mendukung proses pembelajaran.</p>
+                    </div>
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Internet Cepat</h3>
+                        <p>Akses internet fiber optic 1Gbps dengan WiFi coverage di seluruh area sekolah.</p>
+                    </div>
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Perpustakaan Digital</h3>
+                        <p>Perpustakaan dengan koleksi lebih dari 10.000 buku dan akses ke perpustakaan digital nasional.</p>
+                    </div>
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Laboratorium Praktik</h3>
+                        <p>Laboratorium praktik untuk setiap program keahlian dengan peralatan standar industri.</p>
+                    </div>
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-football-ball"></i>
+                        </div>
+                        <h3>Lapangan Olahraga</h3>
+                        <p>Lapangan basket, futsal, voli, dan area fitness untuk menunjang kegiatan olahraga.</p>
+                    </div>
+                    <div class="fasilitas-card">
+                        <div class="fasilitas-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Kantin Sehat</h3>
+                        <p>Kantin dengan menu sehat dan bergizi, serta area makan yang nyaman.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Berita Page -->
+    <div id="berita" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Berita & Kegiatan</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Berita</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Berita Terkini</h2>
+                </div>
+                
+                <div class="berita-grid">
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Pramuka">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">15 Agustus 2023</div>
+                            <h3>Kegiatan Pramuka SMK Negeri 1 Teknologi</h3>
+                            <p>Kegiatan perkemahan Jumat-Sabtu (Persami) dilaksanakan di Bumi Perkemahan Cibubur dengan peserta seluruh siswa kelas X. Kegiatan ini bertujuan untuk melatih kemandirian dan kerja sama tim.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Workshop Kewirausahaan">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">10 Agustus 2023</div>
+                            <h3>Workshop Kewirausahaan untuk Siswa Kelas XII</h3>
+                            <p>SMK Negeri 1 Teknologi mengadakan workshop kewirausahaan dengan menghadirkan pengusaha sukses alumni SMK. Workshop ini memberikan inspirasi dan pengetahuan praktis tentang memulai bisnis.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Prestasi Siswa">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">5 Agustus 2023</div>
+                            <h3>Siswa SMK Negeri 1 Teknologi Raih Juara Lomba Coding</h3>
+                            <p>Tim coding SMK Negeri 1 Teknologi berhasil meraih juara 1 dalam kompetisi coding tingkat provinsi. Prestasi ini membuktikan kualitas pendidikan di bidang teknologi informasi di sekolah kami.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Kunjungan Industri">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">1 Agustus 2023</div>
+                            <h3>Kunjungan Industri ke Perusahaan Teknologi Terkemuka</h3>
+                            <p>Siswa jurusan RPL dan TKJ melakukan kunjungan industri ke perusahaan teknologi terkemuka untuk melihat langsung penerapan ilmu yang dipelajari di dunia kerja.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pelatihan Guru">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">28 Juli 2023</div>
+                            <h3>Pelatihan Peningkatan Kompetensi Guru</h3>
+                            <p>Guru-guru SMK Negeri 1 Teknologi mengikuti pelatihan peningkatan kompetensi dalam penggunaan teknologi pembelajaran terbaru untuk meningkatkan kualitas mengajar.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                    <div class="berita-card">
+                        <div class="berita-img">
+                            <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Penerimaan Siswa Baru">
+                        </div>
+                        <div class="berita-content">
+                            <div class="berita-date">25 Juli 2023</div>
+                            <h3>Penerimaan Siswa Baru Tahun Ajaran 2023/2024</h3>
+                            <p>Penerimaan siswa baru untuk tahun ajaran 2023/2024 telah dibuka. Pendaftaran dapat dilakukan secara online melalui website sekolah atau langsung ke sekretariat.</p>
+                            <a href="#" class="read-more">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Galeri Page -->
+    <div id="galeri" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Galeri Kegiatan</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Galeri</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Galeri Foto Kegiatan Sekolah</h2>
+                </div>
+                
+                <div class="galeri-grid">
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Pramuka">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Workshop Kewirausahaan">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Prestasi Siswa">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Kunjungan Industri">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pelatihan Guru">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gedung Sekolah">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Komputer">
+                    </div>
+                    <div class="galeri-item">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Jaringan">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Kontak Page -->
+    <div id="kontak" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Kontak Kami</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                    <li>Kontak</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Hubungi Kami</h2>
+                </div>
+                
+                <div class="kontak-container">
+                    <div class="kontak-info">
+                        <h3>Informasi Kontak</h3>
+                        
+                        <div class="kontak-item">
+                            <div class="kontak-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="kontak-detail">
+                                <h4>Alamat</h4>
+                                <p>Jl. Teknologi No. 123, Jakarta 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="kontak-item">
+                            <div class="kontak-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="kontak-detail">
+                                <h4>Telepon</h4>
+                                <p>(021) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="kontak-item">
+                            <div class="kontak-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="kontak-detail">
+                                <h4>Email</h4>
+                                <p>info@smkpondokpetir.sch.id</p>
+                            </div>
+                        </div>
+                        
+                        <div class="kontak-item">
+                            <div class="kontak-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="kontak-detail">
+                                <h4>Jam Operasional</h4>
+                                <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
+                                <p>Sabtu: 08.00 - 12.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kontak-form">
+                        <h3>Kirim Pesan</h3>
+                        <form id="formKontak">
+                            <div class="form-group">
+                                <label for="nama">Nama Lengkap</label>
+                                <input type="text" id="nama" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subjek">Subjek</label>
+                                <input type="text" id="subjek" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pesan">Pesan</label>
+                                <textarea id="pesan" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="map-container" style="margin-top: 60px;">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Lokasi Kami</h3>
+                    <div style="width: 100%; height: 400px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <p>Peta Lokasi SMK Negeri 1 Teknologi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Tentang Kami</h3>
+                    <p>SMK Pondok Petir adalah sekolah kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang Desain Komunikasi Visual dan Bisnis Daring Pemasaran.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100095420731598"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/smkpondokpetir/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                        <li><a href="#" class="nav-link" data-page="profil">Profil Sekolah</a></li>
+                        <li><a href="#" class="nav-link" data-page="jurusan">Program Keahlian</a></li>
+                        <li><a href="#" class="nav-link" data-page="fasilitas">Fasilitas</a></li>
+                        <li><a href="#" class="nav-link" data-page="kontak">Pendaftaran</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak Kami</h3>
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl.Kesadaran III, Pondok Petir Bojongsari Depok</p>
+                        <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                        <p><i class="fas fa-envelope"></i> info@smkpondokpetir.sch.id</p>
+                        <p><i class="fas fa-clock"></i> Senin - Jumat: 07.00 - 16.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SMK Pondok Petir. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle - TAMBAHKAN di awal script
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    document.getElementById('main-menu').classList.toggle('show');
+});
+
+// Tutup menu mobile ketika link diklik - TAMBAHKAN ini
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+        // Tutup menu mobile
+        document.getElementById('main-menu').classList.remove('show');
+    });
+});
+        
+        // Navigation System
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                document.getElementById('main-menu').classList.remove('show');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Contact Form Handler
+        document.getElementById('formKontak').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.');
+            this.reset();
+        });
+        
+        console.log("Website SMK lengkap dengan semua halaman siap digunakan!");
+    </script>
+</body>
+</html>
