@@ -439,6 +439,18 @@
                     <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
                     <li>Galeri</li>
                 </ul>
+                <!-- GALERI PAGE - Tambahkan sebelum </section> penutup -->
+</div> <!-- Penutup galeri-grid -->
+
+<!-- LIGHTBOX HTML - Tambahkan di sini -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="caption"></div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+</div>
+
             </div>
         </section>
         
@@ -448,34 +460,34 @@
                     <h2>Galeri Foto Kegiatan Sekolah</h2>
                 </div>
                 
-                <div class="galeri-grid">
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Pramuka">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Workshop Kewirausahaan">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Prestasi Siswa">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Kunjungan Industri">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pelatihan Guru">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gedung Sekolah">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Komputer">
-                    </div>
-                    <div class="galeri-item">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Jaringan">
-                    </div>
-                </div>
-            </div>
-        </section>
+                <!-- Di dalam <div class="galeri-grid"> - GANTI semua galeri-item -->
+<div class="galeri-grid">
+    <div class="galeri-item" onclick="openLightbox(0)">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Pramuka">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(1)">
+        <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Workshop Kewirausahaan">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(2)">
+        <img src="https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Prestasi Siswa">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(3)">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Kunjungan Industri">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(4)">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pelatihan Guru">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(5)">
+        <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gedung Sekolah">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(6)">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Komputer">
+    </div>
+    <div class="galeri-item" onclick="openLightbox(7)">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laboratorium Jaringan">
+    </div>
+</div>       
+ </section>
     </div>
 
     <!-- Kontak Page -->
@@ -696,6 +708,105 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 
+// ===== LIGHTBOX FUNCTIONALITY =====
+let currentImageIndex = 0;
+const galleryImages = [
+    {
+        src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        alt: "Kegiatan Pramuka"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+        alt: "Workshop Kewirausahaan"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1588072432836-1007cdac2ad9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        alt: "Prestasi Siswa"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80",
+        alt: "Kunjungan Industri"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        alt: "Pelatihan Guru"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
+        alt: "Gedung Sekolah"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        alt: "Laboratorium Komputer"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        alt: "Laboratorium Jaringan"
+    }
+];
+
+function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.querySelector('.caption');
+    
+    lightbox.style.display = 'block';
+    lightboxImg.src = galleryImages[index].src;
+    lightboxImg.alt = galleryImages[index].alt;
+    caption.textContent = galleryImages[index].alt;
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function changeImage(step) {
+    currentImageIndex += step;
+    
+    // Loop around
+    if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+    }
+    
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.querySelector('.caption');
+    
+    lightboxImg.src = galleryImages[currentImageIndex].src;
+    lightboxImg.alt = galleryImages[currentImageIndex].alt;
+    caption.textContent = galleryImages[currentImageIndex].alt;
+}
+
+// Event Listeners untuk Lightbox
+document.querySelector('.close').addEventListener('click', closeLightbox);
+document.querySelector('.prev').addEventListener('click', () => changeImage(-1));
+document.querySelector('.next').addEventListener('click', () => changeImage(1));
+
+// Close lightbox dengan ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+        changeImage(-1);
+    } else if (e.key === 'ArrowRight') {
+        changeImage(1);
+    }
+});
+
+// Close lightbox ketika klik di luar gambar
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLightbox();
+    }
+});
+
+console.log("Lightbox functionality loaded!");
 </script>
 
 <button id="backToTop" class="back-to-top">
