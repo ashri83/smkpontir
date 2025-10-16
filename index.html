@@ -47,6 +47,11 @@
                 </ul>
             </nav>
         </div>
+
+        <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Cari berita, informasi...">
+    <button id="searchBtn"><i class="fas fa-search"></i></button>
+</div>
     </header>
 
     <!-- Beranda Page -->
@@ -667,6 +672,35 @@ document.querySelectorAll('.nav-link').forEach(link => {
         });
         
         console.log("Website SMK lengkap dengan semua halaman siap digunakan!");
-    </script>
+
+        // Back to Top Functionality - TAMBAHKAN di dalam script tag
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTop = document.getElementById('backToTop');
+    
+    // Tampilkan/sembunyikan tombol saat scroll
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll ke atas ketika tombol diklik
+    backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}); 
+
+</script>
+
+<button id="backToTop" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
 </body>
 </html>
