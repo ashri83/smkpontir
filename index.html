@@ -43,7 +43,7 @@
                     <li><a href="#" class="nav-link" data-page="fasilitas">Fasilitas</a></li>
                     <li><a href="#" class="nav-link" data-page="berita">Berita</a></li>
                     <li><a href="#" class="nav-link" data-page="galeri">Galeri</a></li>
-                    <li><a href="#" class="nav-link" data-page="kontak">Kontak</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -439,18 +439,7 @@
                     <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
                     <li>Galeri</li>
                 </ul>
-                <!-- GALERI PAGE - Tambahkan sebelum </section> penutup -->
-</div> <!-- Penutup galeri-grid -->
-
-<!-- LIGHTBOX HTML - Tambahkan di sini -->
-<div id="lightbox" class="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-    <div class="caption"></div>
-    <a class="prev">&#10094;</a>
-    <a class="next">&#10095;</a>
-</div>
-
+                </div> 
             </div>
         </section>
         
@@ -491,106 +480,111 @@
     </div>
 
     <!-- Kontak Page -->
-    <div id="kontak" class="page">
-        <section class="page-header">
-            <div class="container">
-                <h1>Kontak Kami</h1>
-                <ul class="breadcrumb">
-                    <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
-                    <li>Kontak</li>
-                </ul>
+<div id="kontak" class="page">
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Kontak Kami</h1>
+            <ul class="breadcrumb">
+                <li><a href="#" class="nav-link" data-page="beranda">Beranda</a></li>
+                <li>Kontak</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
             </div>
-        </section>
-        
-        <section class="page-content">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Hubungi Kami</h2>
-                </div>
-                
-                <div class="kontak-container">
-                    <div class="kontak-info">
-                        <h3>Informasi Kontak</h3>
-                        
-                        <div class="kontak-item">
-                            <div class="kontak-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="kontak-detail">
-                                <h4>Alamat</h4>
-                                <p>Jl. Teknologi No. 123, Jakarta 12345</p>
-                            </div>
+            
+            <div class="kontak-container">
+                <div class="kontak-info">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        
-                        <div class="kontak-item">
-                            <div class="kontak-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="kontak-detail">
-                                <h4>Telepon</h4>
-                                <p>(021) 1234-5678</p>
-                            </div>
-                        </div>
-                        
-                        <div class="kontak-item">
-                            <div class="kontak-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="kontak-detail">
-                                <h4>Email</h4>
-                                <p>info@smkpondokpetir.sch.id</p>
-                            </div>
-                        </div>
-                        
-                        <div class="kontak-item">
-                            <div class="kontak-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="kontak-detail">
-                                <h4>Jam Operasional</h4>
-                                <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
-                                <p>Sabtu: 08.00 - 12.00 WIB</p>
-                            </div>
+                        <div class="kontak-detail">
+                            <h4>Alamat</h4>
+                            <p>Jl. Kesadaran III, Pondok Petir Bojongsari Depok</p>
                         </div>
                     </div>
                     
-                    <div class="kontak-form">
-                        <h3>Kirim Pesan</h3>
-                        <form id="formKontak">
-                            <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
-                                <input type="text" id="nama" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subjek">Subjek</label>
-                                <input type="text" id="subjek" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="pesan">Pesan</label>
-                                <textarea id="pesan" class="form-control" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn">Kirim Pesan</button>
-                        </form>
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="kontak-detail">
+                            <h4>Telepon</h4>
+                            <p>(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="kontak-detail">
+                            <h4>Email</h4>
+                            <p>info@smkpondokpetir.sch.id</p>
+                        </div>
+                    </div>
+                    
+                    <div class="kontak-item">
+                        <div class="kontak-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="kontak-detail">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
+                            <p>Sabtu: 08.00 - 12.00 WIB</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="map-container" style="margin-top: 60px;">
-                    <h3 style="text-align: center; margin-bottom: 20px;">Lokasi Kami</h3>
-                    <div style="width: 100%; height: 400px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                        <p>Peta Lokasi SMK Negeri 1 Teknologi</p>
+                <div class="kontak-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="formKontak">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input type="text" id="nama" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subjek">Subjek</label>
+                            <input type="text" id="subjek" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pesan">Pesan</label>
+                            <textarea id="pesan" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <h3>Lokasi Kami</h3>
+                <div class="map-placeholder">
+                    <p>Peta Lokasi SMK Pondok Petir</p>
+                    <div class="map-actions">
+                        <button class="btn">Lihat di Google Maps</button>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
     <!-- Footer -->
     <footer>
