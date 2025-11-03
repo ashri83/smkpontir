@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - SMK Pondok Petir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Reset dan base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #1a5fb4;
+    --secondary: #e6b325;
+    --dark: #2e3436;
+    --light: #f6f5f5;
+}
+
+body {
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: var(--primary);
+    color: white;
+    padding: 20px 0;
+}
+
+.logo {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo h2 {
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.nav-links li {
+    padding: 15px 25px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
+}
+
+.nav-links li.active,
+.nav-links li:hover {
+    background: rgba(255,255,255,0.1);
+    border-left-color: var(--secondary);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.content-area {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #1558a0;
+}
+
+.btn-success {
+    background: var(--secondary);
+}
+
+.btn-success:hover {
+    background: #d19d1f;
+}
+
+/* Data Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+/* Tab System */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 12px 25px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.tab.active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Image Preview */
+.image-preview {
+    max-width: 200px;
+    max-height: 150px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===== GALERI ADMIN STYLES ===== */
+.galeri-grid-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.galeri-item-admin {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.galeri-item-admin:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.galeri-item-admin img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+}
+
+.galeri-info {
+    padding: 15px;
+}
+
+.galeri-judul {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.galeri-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.kategori-badge {
+    background: var(--primary);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.galeri-date {
+    font-size: 0.7rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+.galeri-actions {
+    text-align: center;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-badge.published {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* User Info & Logout Styles */
+.user-info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    background: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.btn-logout {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    
+    .tabs {
+        overflow-x: auto;
+    }
+    
+    .tab {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .galeri-grid-admin {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .user-info-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-school"></i> SMK PONDOK PETIR</h2>
+                <p>Admin Panel</p>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#" data-tab="beranda"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" data-tab="berita"><i class="fas fa-newspaper"></i> Tambah Berita</a></li>
+                <li><a href="#" data-tab="kelola-berita"><i class="fas fa-edit"></i> Kelola Berita</a></li>
+                <li><a href="#" data-tab="galeri"><i class="fas fa-images"></i> Kelola Galeri</a></li>
+                <li><a href="#" data-tab="pengumuman"><i class="fas fa-bullhorn"></i> Pengumuman</a></li>
+                <li><a href="#" data-tab="statistik"><i class="fas fa-chart-bar"></i> Statistik</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>Dashboard Admin</h1>
+                <p>Selamat datang di panel admin website SMK Pondok Petir</p>
+            </div>
+            </div>
+            <div id="userInfo">
+                        <!-- JavaScript akan mengisi ini dengan:
+                        - Nama user
+                        - Role  
+                        - Tombol logout -->
+                    </div>
+            <div class="content-area">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="berita">Tambah Berita</div>
+                    <div class="tab" data-tab="kelola-berita">Kelola Berita</div>
+                    <div class="tab" data-tab="galeri">Tambah Foto Galeri</div>
+                    <div class="tab" data-tab="pengumuman">Pengumuman</div>
+                </div>
+
+                <!-- Alert Message -->
+                <div class="alert" id="alertMessage"></div>
+
+                <!-- Tab Content: Tambah Berita -->
+                <div class="tab-content active" id="berita-tab">
+                    <h2>Tambah Berita Baru</h2>
+                    <form id="formBerita">
+                        <div class="form-group">
+                            <label for="judulBerita">Judul Berita</label>
+                            <input type="text" id="judulBerita" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tanggalBerita">Tanggal</label>
+                            <input type="date" id="tanggalBerita" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gambarBerita">Gambar Berita</label>
+                            <input type="file" id="gambarBerita" class="form-control" accept="image/*">
+                            <small>Ukuran maksimal 2MB, format: JPG, PNG</small>
+                            <img id="previewBerita" class="image-preview" alt="Preview">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deskripsiBerita">Deskripsi Singkat</label>
+                            <textarea id="deskripsiBerita" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="kontenBerita">Konten Lengkap</label>
+                            <textarea id="kontenBerita" class="form-control" rows="6" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Simpan Berita
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tab Content: Kelola Berita -->
+                <div class="tab-content" id="kelola-berita-tab">
+                    <h2>Kelola Berita</h2>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Judul</th>
+                                    <th>Gambar</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBerita">
+                                <!-- Data berita akan dimuat di sini -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Galeri -->
+                <div class="tab-content" id="galeri-tab">
+                    <h2>Tambah Foto ke Galeri</h2>
+                    <form id="formGaleri">
+                        <div class="form-group">
+                            <label for="judulGaleri">Judul Foto</label>
+                            <input type="text" id="judulGaleri" class="form-control" required placeholder="contoh:Kegiatan Class Meeting">
+                        </div>
+                        
+                        <div class="form-group">
+            <label for="gambarGaleri">Upload Foto</label>
+            <input type="file" id="gambarGaleri" class="form-control" accept="image/*" required>
+            <small>Ukuran maksimal 2MB, format: JPG, PNG, GIF</small>
+            <img id="previewGaleri" class="image-preview" alt="Preview">
+        </div>
+                        
+                        <div class="form-group">
+            <label for="kategoriGaleri">Kategori</label>
+            <select id="kategoriGaleri" class="form-control">
+                <option value="kegiatan">Kegiatan Sekolah</option>
+                <option value="prestasi">Prestasi</option>
+                <option value="fasilitas">Fasilitas</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+        </div>
+                        
+                        <button type="submit" class="btn btn-success">
+            <i class="fas fa-upload"></i> Upload ke Galeri
+        </button>
+    </form>
+        </div>
+
+        <!-- BAGIAN BARU: Kelola Galeri -->
+    <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #eee;">
+        <h3><i class="fas fa-cog"></i> Kelola Galeri</h3>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0;">
+            <p><strong>Total Foto:</strong> <span id="totalFoto" style="font-weight: bold; color: var(--primary);">0</span> gambar</p>
+            
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+            <button type="button" class="btn" onclick="admin.tampilkanSemuaGaleri()">
+                <i class="fas fa-eye"></i> Lihat Semua Foto
+            </button>
+            <button type="button" class="btn btn-danger" onclick="admin.resetGaleriKeDefault()">
+                <i class="fas fa-undo"></i> Reset ke Foto Default
+            </button>
+        </div>
+        
+        <!-- Container untuk daftar galeri -->
+        <div id="daftarGaleri"></div>
+    </div>
+</div>
+
+                <!-- Tab Content: Pengumuman -->
+                <div class="tab-content" id="pengumuman-tab">
+                    <h2>Buat Pengumuman</h2>
+                    <form id="formPengumuman">
+                        <div class="form-group">
+                            <label for="judulPengumuman">Judul Pengumuman</label>
+                            <input type="text" id="judulPengumuman" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tanggalPengumuman">Tanggal</label>
+                            <input type="date" id="tanggalPengumuman" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="isiPengumuman">Isi Pengumuman</label>
+                            <textarea id="isiPengumuman" class="form-control" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="statusPengumuman">Status</label>
+                            <select id="statusPengumuman" class="form-control">
+                                <option value="active">Aktif</option>
+                                <option value="inactive">Non-Aktif</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-bullhorn"></i> Publikasi Pengumuman
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
